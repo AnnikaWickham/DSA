@@ -1,4 +1,48 @@
-# General Structure for a Monotonic Stack
+# General Structure for a Monotonic Stack: an implementation of the stack
 # There are 2 types:
     # Monotonic Increasing Stack
+        # Elements increase from bottom to top. 
+        # Before pushing a new element, you pop all elements greater than (or equal to) the new element.
+        # *Used to find next SMALLEST or previous SMALLEST element
     # Monotonic Decreasing Stack
+        # Elements decrease from bottom to top. 
+            # Before pushing a new element, you pop all elements greater than (or equal to) the new element.
+            # *Used to find next LARGEST or previous LARGEST element
+
+
+# Monotonic Increasing Stack:
+def next_smaller_element(array):
+    l = len(array)
+    ans = [-1] * l  # Initialize default values (e.g., -1 if no smaller element exists)
+    stack = []         # This will store indices of elements
+    
+    for i in range(l):
+        # While stack is not empty and current element is SMALLER than the stack's top element
+        while stack and array[i] < array[stack[-1]]:
+            popped_index = stack.pop()
+            # The current element arr[i] is the NEXT SMALLER element for arr[popped_index]
+            ans[popped_index] = array[i]
+            
+        # Push the current index onto the stack
+        stack.append(i)
+        
+    return ans
+
+
+# Monotonic Decreasing Stack:
+def next_smaller_element(array):
+    l = len(array)
+    ans = [-1] * l  # Initialize default values (e.g., -1 if no greater element exists)
+    stack = []         # This will store indices of elements
+    
+    for i in range(l):
+        # While stack is not empty and current element is GREATER than the stack's top element
+        while stack and array[i] > array[stack[-1]]:
+            popped_index = stack.pop()
+            # The current element arr[i] is the NEXT GREATEST element for arr[popped_index]
+            ans[popped_index] = array[i]
+            
+        # Push the current index onto the stack
+        stack.append(i)
+        
+    return ans
