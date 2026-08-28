@@ -1,0 +1,4 @@
+# General Structure for a Monotonic Stack
+# There are 2 types:
+    # Monotonic Increasing Stack
+    # Monotonic Decreasing Stack
