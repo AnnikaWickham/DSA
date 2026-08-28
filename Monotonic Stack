@@ -30,7 +30,7 @@ def next_smaller_element(array):
 
 
 # Monotonic Decreasing Stack:
-def next_smaller_element(array):
+def next_greater_element(array):
     l = len(array)
     ans = [-1] * l  # Initialize default values (e.g., -1 if no greater element exists)
     stack = []         # This will store indices of elements
@@ -46,3 +46,15 @@ def next_smaller_element(array):
         stack.append(i)
         
     return ans
+
+
+# Testing our logic
+def main():
+    a = [1, 2, 5, 3, 7, 8, 4, 2, 9]
+    b = [6, 10, 6, 1, 16, 5, 7, 3, 1]
+    print(f"Next Smaller Element: {next_smaller_element(a)}")
+    print(f"Next Smaller Element: {next_smaller_element(b)}")
+    print(f"Next Greater Element: {next_greater_element(a)}")
+    print(f"Next Greater Element: {next_greater_element(b)}")
+
+main()
