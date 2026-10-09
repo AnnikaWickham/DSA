@@ -1,0 +1,25 @@
+#Insertion Sort: Sort of a slow sorting algorithm that sorts one element at a time. The sorted portion of the
+#array is on the left, and the unsorted part is on the right. Theres 2 loops, the outer loop keeps track
+#of the position where it's sorted. The inner loop is used to find the right spot for the current element.
+#has O(n^2) runtime due to the 2 loops (actually n(n-1)/2)
+
+def insertionSort(array): 
+    for i in range(len(array)):
+        j = i
+        while (j > 0) and (array[j] < array[j-1]):
+            array[j-1], array[j] = array[j], array[j-1]
+            j -= 1
+    return array
+
+
+
+# Testing our logic
+def main():
+    a = [1, 2, 5, 3, 7, 8, 4, 2, 9]
+    b = [6, 10, 6, 1, 16, 5, 7, 3, 1]
+    aSorted = insertionSort(a)
+    bSorted = insertionSort(b)
+    print(f"Sorted using Insertion: {aSorted}")
+    print(f"Sorted using Insertion: {bSorted}")
+
+main()
